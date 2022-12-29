@@ -1,4 +1,4 @@
 package data;
 
-public class DocPath {
+final public class DocPath {
 }

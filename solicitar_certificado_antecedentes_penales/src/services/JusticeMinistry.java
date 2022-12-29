@@ -2,6 +2,8 @@ package services;
 
 import data.Goal;
 import exception.DigitalSignatureException;
+import publicadministration.Citizen;
+import publicadministration.CriminalRecordCertf;
 
 import java.rmi.ConnectException;
 

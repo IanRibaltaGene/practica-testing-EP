@@ -1,4 +1,4 @@
 package data;
 
-public class DigitalSignature {
+final public class DigitalSignature {
 }

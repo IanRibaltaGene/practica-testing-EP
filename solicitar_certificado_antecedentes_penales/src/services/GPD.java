@@ -2,6 +2,7 @@ package services;
 
 import data.Goal;
 import exception.IncorrectVerificationException;
+import publicadministration.Citizen;
 
 import java.rmi.ConnectException;
 

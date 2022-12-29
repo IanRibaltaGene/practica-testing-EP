@@ -2,6 +2,7 @@ package services;
 
 import exception.InsufficientBalanceException;
 import exception.NotValidPaymentDataException;
+import publicadministration.CreditCard;
 
 import java.math.BigDecimal;
 import java.rmi.ConnectException;

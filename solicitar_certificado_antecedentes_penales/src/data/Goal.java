@@ -1,4 +1,4 @@
 package data;
 
-public class Goal {
+final public class Goal {
 }

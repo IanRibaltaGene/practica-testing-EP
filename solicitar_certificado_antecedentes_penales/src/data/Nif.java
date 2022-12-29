@@ -2,7 +2,7 @@ package data;
 /**
  * Essential data classes
  */
-public class Nif {
+final public class Nif {
     // The tax identification number in the Spanish state.
     private final String nif;
     public Nif (String code) { this.nif = code; }

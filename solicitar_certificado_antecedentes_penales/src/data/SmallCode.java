@@ -1,4 +1,4 @@
 package data;
 
-public class SmallCode {
+final public class SmallCode {
 }
