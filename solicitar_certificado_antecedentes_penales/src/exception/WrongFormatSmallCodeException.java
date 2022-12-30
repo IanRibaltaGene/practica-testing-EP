@@ -1,7 +1,7 @@
 package exception;
 
-public class WrongFormatCVSException extends Exception {
-    public WrongFormatCVSException(String message){
+public class WrongFormatSmallCodeException extends Exception {
+    public WrongFormatSmallCodeException(String message){
         super(message);
     }
 }

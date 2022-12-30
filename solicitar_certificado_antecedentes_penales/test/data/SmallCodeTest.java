@@ -31,4 +31,40 @@ class SmallCodeTest {
     @Test
     void testToString() {
     }
+
+    @Test
+    void getSmallCode() {
+    }
+
+    @Test
+    void testEquals1() {
+    }
+
+    @Test
+    void testHashCode1() {
+    }
+
+    @Test
+    void testToString1() {
+    }
+
+    @Test
+    void testGetSmallCode() {
+    }
+
+    @Test
+    void getNif() {
+    }
+
+    @Test
+    void testEquals2() {
+    }
+
+    @Test
+    void testHashCode2() {
+    }
+
+    @Test
+    void testToString2() {
+    }
 }
