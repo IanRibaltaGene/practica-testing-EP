@@ -1,7 +1,6 @@
 package data;
 
 import exception.NullCodeException;
-import exception.NullNifException;
 import exception.WrongFormatSmallCodeException;
 
 final public class SmallCode {

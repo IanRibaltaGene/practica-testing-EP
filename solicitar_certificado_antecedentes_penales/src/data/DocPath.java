@@ -6,7 +6,6 @@ final public class DocPath {
 
     private final String docPath;
 
-
     public DocPath(String docPath) throws NullPathException {
         if(docPath == null){
             throw new NullPathException("Document path parameter cannot be null");

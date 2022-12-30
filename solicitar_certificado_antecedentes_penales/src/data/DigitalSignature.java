@@ -8,7 +8,6 @@ final public class DigitalSignature {
 
     private final byte[] digitalSignature;
 
-
     public DigitalSignature(byte[] digitalSignature) throws NullSignatureException {
         if(digitalSignature == null){
             throw new NullSignatureException("Digital signature cannot be null");
