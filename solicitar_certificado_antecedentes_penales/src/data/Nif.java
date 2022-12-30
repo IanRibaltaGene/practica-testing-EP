@@ -29,11 +29,20 @@ final public class Nif {
         if (type == 'K' || type == 'L' || type == 'M' || type == 'X' || type == 'Y' || type == 'Z') {
             numbers = niff.substring(1, 8);
             controlLetter = niff.charAt(8);
-        } else {
+        } else if(!Character.isDigit(type)){
+            return false;
+        }else{
             numbers = niff.substring(0, 8);
             controlLetter = niff.charAt(8);
         }
-
+        if(!Character.isLetter(controlLetter)){
+            return false;
+        }
+        for(int i=0; i<8; i++){
+            if (!Character.isDigit(numbers.charAt(i))) {
+                return false;
+            }
+        }
         int baseInt = Integer.parseInt(numbers);
         int controlInt = Character.getNumericValue(controlLetter);
 
