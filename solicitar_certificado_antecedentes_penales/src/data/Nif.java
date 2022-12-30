@@ -38,15 +38,13 @@ final public class Nif {
         if(!Character.isLetter(controlLetter)){
             return false;
         }
-        for(int i=0; i<8; i++){
+        for(int i=0; i < numbers.length(); i++){
             if (!Character.isDigit(numbers.charAt(i))) {
                 return false;
             }
         }
-        int baseInt = Integer.parseInt(numbers);
-        int controlInt = Character.getNumericValue(controlLetter);
+        return true;
 
-        return controlInt == baseInt % 23;
     }
 
     public String getNif () { return nif; }
