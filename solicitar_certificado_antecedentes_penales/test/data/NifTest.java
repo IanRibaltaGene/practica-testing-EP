@@ -3,6 +3,7 @@ package data;
 import exception.NullNifException;
 import exception.WrongFormatNifException;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,19 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class NifTest {
 
-    private Nif nif1;
-    private Nif nifK;
+    private static Nif nif1;
+    private static Nif nifK;
 
-    @BeforeEach
-    void setUp() throws WrongFormatNifException, NullNifException {
+    @BeforeAll
+    static void setUp() throws WrongFormatNifException, NullNifException {
         nif1 = new Nif("11111111F");
         nifK = new Nif("K1111111A");
-    }
-
-    @AfterEach
-    void tearDown() {
-        nif1 = null;
-        nifK = null;
     }
 
     @Test
