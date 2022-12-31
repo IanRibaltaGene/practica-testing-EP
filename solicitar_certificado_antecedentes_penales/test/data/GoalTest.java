@@ -1,17 +1,18 @@
 package data;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import exception.NullGoalException;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GoalTest {
+    @Test
+    void constructorNullException() {
+        Throwable nullException = assertThrows(NullGoalException.class,
+                () -> {
+                    Goal goal = new Goal(null);
+                });
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
+        assertEquals("Type must not be null", nullException.getMessage());
     }
 }

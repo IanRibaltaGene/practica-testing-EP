@@ -10,16 +10,24 @@ public class CrimConvictionsColl {
         //TODO(. . .)
     } // Initializes the object
     //TODO(. . .) // the getters
-    public addCriminalConviction (CrimConviction crmC){
+
+
+
+    /*public addCriminalConviction (CrimConviction crmC){
         //TODO(. . .)
-    }
+    }*/
+
+
+
     // Adds a criminal conviction
     public CrimConviction getCriminalConviction (Date date){
         //TODO(. . .)
+        return null;
     }
     // Gets a specific criminal conviction by date
     public String toString () {
         //TODO(. . .)
+        return null;
     } // Converts to String
 
 }

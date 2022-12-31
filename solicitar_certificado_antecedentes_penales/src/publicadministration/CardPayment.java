@@ -5,7 +5,7 @@ import data.Nif;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class CardPayment {
+/*public class CardPayment {
     // The information associated to the payment realized via internet
     private final String reference; // The code of the operation
     private final Nif nif; // The nif of the user
@@ -18,6 +18,7 @@ public class CardPayment {
     @Override
     public String toString () {
         //TODO(. . .)
+        return null;
     } // converts to String
 
-}
+}*/
