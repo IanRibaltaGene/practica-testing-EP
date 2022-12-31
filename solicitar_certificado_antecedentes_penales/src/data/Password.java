@@ -13,12 +13,12 @@ final public class Password {
         }
         if(!isValidPassword(password)){
             throw new WrongFormatPasswordException("Password must be longer than 7 characters and have " +
-                    "an undersocre letter, an uppercase letter, digits and special characters");
+                    "at least a lowercase letter, an uppercase letter, a digit and a special character");
         }
         this.password = password;
     }
 
-    public static boolean isValidPassword(String password){
+    private boolean isValidPassword(String password){
         if (password.length() < 8) {
             return false;
         }
