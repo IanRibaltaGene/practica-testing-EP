@@ -10,9 +10,15 @@ public class CrimConvictionsColl {
         //TODO(. . .)
     } // Initializes the object
     //TODO(. . .) // the getters
+
+
+
     /*public addCriminalConviction (CrimConviction crmC){
         //TODO(. . .)
     }*/
+
+
+
     // Adds a criminal conviction
     public CrimConviction getCriminalConviction (Date date){
         //TODO(. . .)
