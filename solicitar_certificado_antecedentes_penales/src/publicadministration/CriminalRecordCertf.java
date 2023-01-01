@@ -3,6 +3,7 @@ package publicadministration;
 import data.DigitalSignature;
 import data.Goal;
 import data.Nif;
+import exception.NullPathException;
 
 public class CriminalRecordCertf extends PDFDocument{ // Represents the Criminal Record Certificate
     private Nif nif;
@@ -12,10 +13,31 @@ public class CriminalRecordCertf extends PDFDocument{ // Represents the Criminal
     private CrimConvictionsColl crimConvs;
 
     public CriminalRecordCertf (Nif nif, String name, Goal g,
-                                DigitalSignature ds, CrimConvictionsColl crmC)
-    {
-        //TODO. . .
+                                DigitalSignature ds, CrimConvictionsColl crmC) throws NullPathException {
+        this.nif = nif;
+        this.name = name;
+        this.goal = g;
+        this.digSign = ds;
+        this.crimConvs = crmC;
     } // Initializes attributes
 
-    //TODO(. . .) // the getters
+    public Nif getNif() {
+        return nif;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public DigitalSignature getDigSign() {
+        return digSign;
+    }
+
+    public CrimConvictionsColl getCrimConvs() {
+        return crimConvs;
+    }
 }
