@@ -33,25 +33,20 @@ class CreditCardTest {
     @Test
     void constructorNullArgumentException() {
         assertThrows(NullPointerException.class,
-                () -> {
-                    CreditCard creditCard = new CreditCard(null, null, null, null);
-                });
+                () -> new CreditCard(null, null, null, null)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    CreditCard creditCard = new CreditCard(null, cardNumb, expirDate, svc);
-                });
+                () -> new CreditCard(null, cardNumb, expirDate, svc)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    CreditCard creditCard = new CreditCard(nif, null, expirDate, svc);
-                });
+                () -> new CreditCard(nif, null, expirDate, svc)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    CreditCard creditCard = new CreditCard(nif, cardNumb, null, svc);
-                });
+                () -> new CreditCard(nif, cardNumb, null, svc)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    CreditCard creditCard = new CreditCard(nif, cardNumb, expirDate, null);
-                });
+                () -> new CreditCard(nif, cardNumb, expirDate, null)
+                );
     }
     @Test
     void getNif() {

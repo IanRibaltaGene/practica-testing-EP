@@ -28,25 +28,20 @@ class CitizenTest {
     @Test
     void constructorNullArgumentException() {
         assertThrows(NullPointerException.class,
-                () -> {
-                    Citizen citizen = new Citizen(null, null, null, null);
-                });
+                () -> new Citizen(null, null, null, null)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-            Citizen citizen = new Citizen(null, name, add, mobile);
-                });
+                () -> new Citizen(null, name, add, mobile)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    Citizen citizen = new Citizen(nif, null, add, mobile);
-                });
+                () -> new Citizen(nif, null, add, mobile)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    Citizen citizen = new Citizen(nif, name, null, mobile);
-                });
+                () -> new Citizen(nif, name, null, mobile)
+                );
         assertThrows(NullPointerException.class,
-                () -> {
-                    Citizen citizen = new Citizen(nif, name, add, null);
-                });
+                () -> new Citizen(nif, name, add, null)
+                );
     }
 
     @Test

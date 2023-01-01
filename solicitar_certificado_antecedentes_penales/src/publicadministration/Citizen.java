@@ -1,7 +1,6 @@
 package publicadministration;
 
 import data.Nif;
-import exception.NullNifException;
 
 public class Citizen {
     // Represents all the information required for a citizen
