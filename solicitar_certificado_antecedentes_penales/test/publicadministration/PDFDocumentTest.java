@@ -1,6 +1,7 @@
 package publicadministration;
 
 import data.DocPath;
+import exception.BadPathException;
 import exception.NullPathException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,7 +44,7 @@ class PDFDocumentTest {
     }
 
     @Test
-    void moveDocAndOpen() throws NullPathException, IOException {
+    void moveDocAndOpen() throws NullPathException, IOException, BadPathException {
         DocPath destPath = new DocPath("./");
         pdfDocument.moveDoc(destPath);
         assertEquals(destPath, pdfDocument.getDocumentPath());

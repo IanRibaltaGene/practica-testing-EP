@@ -5,31 +5,35 @@ import data.Goal;
 import data.Nif;
 import data.SmallCode;
 import exception.*;
-import publicadministration.Citizen;
-import publicadministration.CreditCard;
+import publicadministration.*;
 import services.CAS;
 import services.CertificationAuthority;
 import services.GPD;
 import services.JusticeMinistry;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.rmi.ConnectException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class UnifiedPlatform {
-    //TODO ??? // The class members
     private CertificationAuthority certificationAuth;
     private GPD gpd;
     private JusticeMinistry justiceMinistry;
     private CAS cas;
 
+    private TreeMap<Date,CardPayment> historicCardPayment;
+
 
     private Procedure procStatus;
     private String section;
     private static class Procedure {
-
         private boolean inProcedure;
         public Citizen citizen;
+
+        public Goal goal;
         public boolean readyToPay;
         public HashMap<Integer,Boolean> procedureSteps;
         private Byte authType;
@@ -42,7 +46,6 @@ public class UnifiedPlatform {
         public void setAuthType(Byte authType) {
             this.authType = authType;
         }
-
         public void setCitizen(Citizen citizen) {
             this.citizen = citizen;
         }
@@ -159,28 +162,37 @@ public class UnifiedPlatform {
         if(!procStatus.readyToPay) throw new ProceduralException("Not ready to pay");
         CreditCard credC;
         try{
-            credC = new CreditCard(cardD.getNif(),cardD.getCNum(), cardD.getDate(),cardD.getN());
+            credC = new CreditCard(cardD.getNif(),cardD.getCardNumb(), cardD.getExpirDate(),cardD.getSvc());
         }
         catch (Exception e){
             throw new IncompleteFormException(e.getMessage());
         }
-        CardPayment cPay = new CardPayment(new Date());
+        if(cas.askForApproval(Procedure.lastTransaction+"",credC,new Date(),BigDecimal.valueOf(3.86))){
+
+            CardPayment cPay = new CardPayment(procStatus.citizen.getNif(), BigDecimal.valueOf(3.86));
+            historicCardPayment.put(new Date(),cPay);
+            System.out.println("Transaccion correcta. Podra escoger entre el certificado apostillado o no.");
+            procStatus.procedureSteps.put(3,true);
+        }else{
+            resetProcedure("Has been an error with CAS");
+        }
+
+
 
     }
     private void obtainCertificate () throws
             BadPathException, DigitalSignatureException,
             ConnectException, ProceduralException {
-
-
-        //TODO(. . .)
+        procStatus.verifySteps(3);
+        CriminalRecordCertf criminalRecordCertf =justiceMinistry.getCriminalRecordCertf(procStatus.citizen,procStatus.goal);
+        System.out.println("Documento genertado en  path "+criminalRecordCertf.getDocumentPath());
     }
     private void printDocument () throws
             BadPathException, PrintingException
     {
-        //TODO(. . .)
+        System.out.println("Imprimiendo documento...");
     }
 
-    //TODO(. . .) // The setter methods for injecting the dependences
 
     public void setCas(CAS cas) {
         this.cas = cas;
@@ -199,8 +211,8 @@ public class UnifiedPlatform {
     private void registerPayment () {
         //TODO(. . .)
     }
-    private void openDocument (DocPath path) throws BadPathException {
-        //TODO(. . .)
+    private void openDocument (DocPath path) throws BadPathException, NullPathException, IOException {
+        (new PDFDocument()).openDoc(path);
     }
     private void printDocument (DocPath path) throws
             BadPathException, PrintingException

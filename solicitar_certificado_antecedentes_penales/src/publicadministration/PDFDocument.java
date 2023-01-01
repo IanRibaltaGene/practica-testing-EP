@@ -1,11 +1,13 @@
 package publicadministration;
 
 import data.DocPath;
+import exception.BadPathException;
 import exception.NullPathException;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.BindException;
 import java.util.Date;
 
 public class PDFDocument {// Represents a PDF document
@@ -51,12 +53,10 @@ public class PDFDocument {// Represents a PDF document
             System.out.println("An error has occurred while moving the document");
         }
     } // Moves the document to the destination path indicated
-    public void openDoc (DocPath path) throws IOException{
-        try {
-            File fileToOpen = new File(path.getDocPath());
-            Desktop.getDesktop().open(fileToOpen);
-        }catch (IOException exception){
-            exception.printStackTrace();
-        }
+    public void openDoc (DocPath path) throws IOException, BadPathException {
+        if(path.getDocPath().isEmpty()) throw new BadPathException("Path Error");
+        File fileToOpen = new File(path.getDocPath());
+        Desktop.getDesktop().open(fileToOpen);
+
     } // Opens the document at the path indicated
 }
