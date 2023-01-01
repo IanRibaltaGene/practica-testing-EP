@@ -7,13 +7,34 @@ public class CrimConviction { // Represents a criminal conviction registered
     private String offense;
     private String sentence;
 
-    public CrimConviction (Date commit, String off, String sentc){ //TODO(. . .)
+    public CrimConviction (Date commit, String off, String sentc){
+        if(commit == null || off == null || sentc == null){
+            throw new NullPointerException("Arguments should not be null");
+        }
+        this.commitDate=commit;
+        this.offense=off;
+        this.sentence=sentc;
     }
 
     // Initializes attributes
-    //TODO(. . .) // the getters
-    public String toString () {
-        //TODO(. . .)
-        return null;
-    } // converts to String
+    public Date getCommitDate() {
+        return commitDate;
+    }
+
+    public String getOffense() {
+        return offense;
+    }
+
+    public String getSentence() {
+        return sentence;
+    }
+
+    @Override
+    public String toString() {
+        return "CrimConviction{" +
+                "commitDate=" + commitDate +
+                ", offense='" + offense + '\'' +
+                ", sentence='" + sentence + '\'' +
+                '}';
+    }
 }
