@@ -26,7 +26,6 @@ public class UnifiedPlatform {
 
     private TreeMap<Date,CardPayment> historicCardPayment;
 
-
     private Procedure procStatus;
     private String section;
     private static class Procedure {
@@ -36,8 +35,11 @@ public class UnifiedPlatform {
         public Goal goal;
         public boolean readyToPay;
         public HashMap<Integer,Boolean> procedureSteps;
+
         private Byte authType;
         public static  int lastTransaction = 0;
+
+
         public Procedure(){
             this.procedureSteps = new HashMap<Integer,Boolean>();
             this.readyToPay = false;
@@ -78,13 +80,18 @@ public class UnifiedPlatform {
             }
         }
 
+        public Byte getAuthType() {
+            return authType;
+        }
+
     }
     public UnifiedPlatform(){
         section = "Menu";
+        historicCardPayment = new TreeMap<Date, CardPayment>();
     }
     // Input events
     public void selectJusMin () {
-        section  = " > Justice Minister";
+        section  += " > Justice Minister";
     }
     public void selectProcedures () {
         section  += " > Procedures";
@@ -128,7 +135,7 @@ public class UnifiedPlatform {
         procStatus =new Procedure();
     }
 
-    private void enterForm (Citizen citz, Goal gl) throws
+    public void enterForm (Citizen citz, Goal gl) throws
             IncompleteFormException, IncorrectVerificationException,
             ConnectException, ProceduralException {
 
@@ -152,10 +159,10 @@ public class UnifiedPlatform {
         }
 
     }
-    private void realizePayment () {
+    public void realizePayment () {
         procStatus.readyToPay = true;
     }
-    private void enterCardData (CreditCard cardD) throws
+    public void enterCardData (CreditCard cardD) throws
             IncompleteFormException, NotValidPaymentDataException,
             InsufficientBalanceException, ConnectException, ProceduralException {
         procStatus.verifySteps(2);
@@ -180,14 +187,14 @@ public class UnifiedPlatform {
 
 
     }
-    private void obtainCertificate () throws
+    public void obtainCertificate () throws
             BadPathException, DigitalSignatureException,
             ConnectException, ProceduralException {
         procStatus.verifySteps(3);
         CriminalRecordCertf criminalRecordCertf =justiceMinistry.getCriminalRecordCertf(procStatus.citizen,procStatus.goal);
         System.out.println("Documento genertado en path "+criminalRecordCertf.getDocumentPath());
     }
-    private void printDocument () throws
+    public void printDocument () throws
             BadPathException, PrintingException
     {
         System.out.println("Imprimiendo documento...");
@@ -214,6 +221,18 @@ public class UnifiedPlatform {
     private void openDocument (DocPath path) throws BadPathException, NullPathException, IOException {
         (new PDFDocument()).openDoc(path);
     }
+
+    public String getSection() {
+        return section;
+    }
+
+    public byte getAuthMethod(){
+        return this.procStatus.getAuthType();
+    }
+
+    public boolean getProcStatusInProcedure() { return procStatus.inProcedure; }
+    public HashMap<Integer, Boolean> getProcStatusSteps() { return procStatus.procedureSteps; }
+
     private void printDocument (DocPath path) throws
             BadPathException, PrintingException
     {

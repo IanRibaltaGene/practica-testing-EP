@@ -10,7 +10,7 @@ import services.JusticeMinistry;
 
 import java.rmi.ConnectException;
 
-public class StubJusticeMinistryTrue implements JusticeMinistry {
+public class FakeJusticeMinistry implements JusticeMinistry {
     @Override
     public CriminalRecordCertf getCriminalRecordCertf(Citizen persD, Goal g) throws DigitalSignatureException, ConnectException {
         byte[] dsBytes = {0,1};
