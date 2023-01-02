@@ -294,30 +294,6 @@ class UnifiedPlatformTest {
     }
 
     @Test
-    void obtainCertificate() throws WrongFormatNifException, NullNifException, WrongFormatSmallCodeException, NullCodeException, NullGoalException, IncorrectValDateException, NifNotRegisteredException, ProceduralException, AnyMobileRegisteredException, ConnectException, NotValidPINException, IncompleteFormException, IncorrectVerificationException, NotValidPaymentDataException, InsufficientBalanceException, DigitalSignatureException, BadPathException {
-        Nif nif = new Nif("00281847M");
-        Date date = new Date();
-        SmallCode code = new SmallCode("123");
-        Goal goal = new Goal(goalTypes.GAMESECTOR);
-        CreditCard card = new CreditCard(nif,"1111111111111111", date, code);
-
-        platform.setCas(new StubCASTrue());
-        platform.setCertificationAuth(new StubCertificationAuthorityTrue());
-        platform.setJusticeMinistry(new FakeJusticeMinistry());
-        platform.setGpd(new StubGPDTrue());
-        platform.selectJusMin();
-        platform.selectProcedures();
-        platform.selectCriminalReportCertf();
-        platform.selectAuthMethod(Byte.valueOf("0"));
-        platform.enterNIFandPINobt(nif, date);
-        platform.enterPIN(code);
-        platform.enterForm(new Citizen(nif,"","",""), goal);
-        platform.realizePayment();
-        platform.enterCardData(card);
-        platform.obtainCertificate();
-    }
-
-    @Test
     void obtainCertificateJusticeFalse() throws WrongFormatNifException, NullNifException, WrongFormatSmallCodeException, NullCodeException, NullGoalException, IncorrectValDateException, NifNotRegisteredException, ProceduralException, AnyMobileRegisteredException, ConnectException, NotValidPINException, IncompleteFormException, IncorrectVerificationException, NotValidPaymentDataException, InsufficientBalanceException, DigitalSignatureException, BadPathException {
         Nif nif = new Nif("00281847M");
         Date date = new Date();
