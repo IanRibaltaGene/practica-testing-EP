@@ -185,7 +185,7 @@ public class UnifiedPlatform {
             ConnectException, ProceduralException {
         procStatus.verifySteps(3);
         CriminalRecordCertf criminalRecordCertf =justiceMinistry.getCriminalRecordCertf(procStatus.citizen,procStatus.goal);
-        System.out.println("Documento genertado en  path "+criminalRecordCertf.getDocumentPath());
+        System.out.println("Documento genertado en path "+criminalRecordCertf.getDocumentPath());
     }
     private void printDocument () throws
             BadPathException, PrintingException
